@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+<p>A share of <span style="color: #089c08" >{{ details.name }}</span> costs {{ details.price|usd }}.</p>
+{% endblock %}

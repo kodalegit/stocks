@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<table id="index">
+    <thead>
+        <tr>
+            <td><strong>Symbol</strong></td>
+            <td></td>
+            <td><strong>Shares Owned</strong></td>
+            <td><strong>Unit Price</strong></td>
+            <td><strong>Total</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stocks in portfolio %}
+        <tr>
+            <td class="symbol">{{ stocks.symbol|upper }}</td>
+            <td><a class="btn btn-outline-success buy-button" href="" role="button">Buy</a>  <a class="btn btn-outline-danger sell-button" href="" role="button">Sell</a></td>
+            <td>{{ stocks.shares }}</td>
+            <td>${{ stocks.current }}</td>
+            <td>{{ stocks.totals|usd }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td><a class="btn btn-outline-warning" href="/update" id="update" role="button">Add to Wallet</a></td>
+            <td><strong>Cash</strong></td>
+            <td>{{ cash|usd }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>GRAND TOTAL</strong></td>
+            <td id="total"></td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    var table = document.getElementById("index");
+    var sumVal = 0;
+    for(let i = 1; i < table.rows.length-1; i++){
+        var valString = (table.rows[i].cells[4].innerHTML)
+        console.log(valString);
+        var numVal = parseFloat(valString.substring(1).replace(/,/g,''));
+        console.log(numVal);
+        if (!isNaN(numVal)){
+            sumVal += numVal;
+        }
+    }
+    console.log(sumVal);
+    let options = {
+        style:"currency",
+        currency: "USD",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    };
+    total = sumVal.toLocaleString("en-US", options);
+    document.getElementById("total").innerHTML = total;
+</script>
+<script>
+    let buyButtons = document.querySelectorAll('.buy-button');
+    buyButtons.forEach(function(button){
+        button.addEventListener('click', function(){
+            var symbol = button.parentElement.parentElement.querySelector('.symbol').innerHTML;
+            let url = '/quickbuy?symbol=' + encodeURIComponent(symbol);
+            button.setAttribute('href', url);
+        });
+
+    });
+
+    let sellButtons = document.querySelectorAll('.sell-button');
+    sellButtons.forEach(function(button){
+        button.addEventListener('click', function(){
+            var symbol = button.parentElement.parentElement.querySelector('.symbol').innerHTML;
+            let url = '/quicksell?symbol=' + encodeURIComponent(symbol);
+            button.setAttribute('href', url);
+        });
+    });
+</script>
+{% endblock %}

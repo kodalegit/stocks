@@ -1,0 +1,50 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+nav .back{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(11,11,219,1) 0%, rgba(159,174,250,1) 0%, rgba(70,185,172,1) 30%, rgba(34,147,125,1) 59%, rgba(56,96,173,1) 100%, rgba(14,224,120,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+nav .up{
+    font-weight: bolder;
+}
+
+table {
+    background-color: transparent;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+table thead {
+    background: #4b93bf;
+}
+
+tbody tr:nth-of-type(odd) {
+    background-color: rgb(100, 200, 200, 0.3)
+}

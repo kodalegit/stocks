@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<table>
+    <thead>
+        <tr>
+            <td><strong>Symbol</strong></td>
+            <td><strong>Transaction</strong></td>
+            <td><strong>Amount of Shares</strong></td>
+            <td><strong>Unit Price</strong></td>
+            <td><strong>Time of Transaction</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trans in past %}
+        <tr>
+            <td>{{ trans.symbol|upper }}</td>
+            {% if trans.shares_bought > 0 %}
+            <td>Buy</td>
+            <td>{{ trans.shares_bought }}</td>
+            {% else %}
+            <td>Sell</td>
+            <td>{{ trans.shares_sold }}</td>
+            {% endif %}
+            <td>${{ trans.share_price }}</td>
+            <td>{{ trans.transaction_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
