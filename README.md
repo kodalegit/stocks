@@ -1,8 +1,8 @@
 # FINANCE
-Stock Trading App that logs stock performance in a user's portfolio.
+Stock trading app that logs stock performance in a user's portfolio and simulates buying and selling.
 
 ## Description
-Finance is a web application that enables a user to buy and sell shares. It provides an up-to-date analysis of the user's portfolio depending on current market price. Stock prices are queried from Yahoo Finance API. The project contains the following:
+Finance is a web application that simulates buying and selling of shares. It provides an up-to-date analysis of the user's portfolio depending on current market price. Stock prices are queried from Yahoo Finance API. The project contains the following:
 - app.py - This is a python file that initializes a Flask application and renders different HTML templates depending on what the user requests. It contains code that validates user login credentials, registers a new user, logs out the user, and coordinates buying and selling of shares.
 - finance.db - SQLite database that stores user credentials and transaction information for every user.
 - finance.sql - Contains SQL queries used to create and alter tables.
